@@ -1,5 +1,5 @@
 export * from './implementations/AuthService'
 export * from './implementations/JwtService'
 export * from './implementations/BaseQueueService'
-export * from './implementations/BulkManagerServiceInifinite'
 export * from './implementations/BaseScheduleService'
+export * from './implementations/ScheduledQueueService'

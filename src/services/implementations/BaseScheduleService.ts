@@ -3,12 +3,12 @@ import { CronJob } from 'cron'
 export abstract class BaseScheduleService {
     protected cron: CronJob
 
-    protected abstract pattern: string
+    protected abstract cronPattern: string
     abstract execute(): Promise<void>
-    protected onCompleted?(): Promise<void>
+    protected onScheduleCompleted?(): Promise<void>
 
-    protected init () {
-      this.cron = new CronJob(this.pattern, this.execute, this.onCompleted, true, 'America/Sao_Paulo', this)
+    protected initSchedule () {
+      this.cron = new CronJob(this.cronPattern, this.execute, this.onScheduleCompleted, true, 'America/Sao_Paulo', this)
     }
 
     start () {

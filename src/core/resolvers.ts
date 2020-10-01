@@ -1,5 +1,5 @@
 import { NonEmptyArray } from 'type-graphql'
-import * as prismaRelationsResolvers from '@generated/typegraphql-prisma/resolvers/relations'
+// import * as prismaRelationsResolvers from '@generated/typegraphql-prisma/resolvers/relations'
 import * as useCaseResolvers from '@/useCases'
 
 function generateResolversArray (entries: {[key: string] : Function}, endsWith: string) {
@@ -25,6 +25,6 @@ function mergeResolversArray (...arrays: NonEmptyArray<Function>[]) {
 }
 
 export const resolvers = mergeResolversArray(
-  generateResolversArray(prismaRelationsResolvers, 'RelationsResolver'),
+  // generateResolversArray(prismaRelationsResolvers, 'RelationsResolver'),
   generateResolversArray(useCaseResolvers, 'Resolver')
 )

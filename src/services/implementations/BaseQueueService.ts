@@ -7,10 +7,10 @@ export abstract class BaseQueueService<T> {
     protected readonly abstract queueName: string
     protected readonly workerOptions: WorkerOptions = {}
     protected abstract processor(job: Job<T>): Promise<any>
-    protected onCompleted?(job: Job<T>): Promise<any>
-    protected onFailed?(job: Job<T>, error: Error): Promise<any>
+    protected onJobCompleted?(job: Job<T>): Promise<any>
+    protected onJobFailed?(job: Job<T>, error: Error): Promise<any>
 
-    protected init () {
+    protected initQueue () {
       this.queue = new Queue(this.queueName)
       this.queueScheduler = new QueueScheduler(this.queueName)
     }
@@ -22,8 +22,8 @@ export abstract class BaseQueueService<T> {
     process () {
       const worker = new Worker(this.queueName, (job: Job<T>) => this.processor(job), this.workerOptions)
 
-      if (this.onCompleted) worker.on('completed', this.onCompleted)
-      if (this.onFailed) worker.on('failed', this.onFailed)
+      if (this.onJobCompleted) worker.on('completed', this.onJobCompleted)
+      if (this.onJobFailed) worker.on('failed', this.onJobFailed)
 
       return worker
     }
