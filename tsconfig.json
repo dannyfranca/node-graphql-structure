@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "lib": [
+      "es6",
+      "esnext.asynciterable",
+      "es2020.promise",
+      "dom"
+    ],
+    "allowJs": true,
+    "outDir": "./dist",                        
+    "rootDir": "./src",                       
+    "removeComments": true,                
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ],                          
+    "esModuleInterop": true,                  
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,        
+    "emitDecoratorMetadata": true,         
+    "skipLibCheck": true,                     
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@core/*": ["./src/core/*"],
+      "@config/*": ["./src/config/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@generated/*": ["./src/generated/*"],
+      "@entities/*": ["./src/entities/*"],
+      "@services/*": ["./src/services/*"],
+      "@repositories/*": ["./src/repositories/*"],
+      "@providers/*": ["./src/providers/*"],
+      "@useCases/*": ["./src/useCases/*"],
+    }
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
